@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spectral', serif;
+    font-size: 1.4vw;
+    font-weight: 200;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 20%;
+    padding: 8vh;
+    
+}
+nav a{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 3vw;
+    position: fixed;
+    font-weight: 200;
+}
+
+header video{
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+header section{
+    color: aliceblue;
+    position: relative;
+    padding: 4%;
+    margin-left: 30vw;
+    margin-top: 10vw;
+}
+header section p{
+    text-align: end;
+}
+h1{
+    font-size: 6vw;
+    font-weight: 500;   
+}
+#blogs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5vw;
+    justify-content: center;
+    margin: 25vw 5vw;
+    color: rgb(15, 15, 74);
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    box-shadow: 7px 7px 10px rgb(214, 205, 196);
+    padding: 6%;
+    margin-top: 3vw;
+    background-color: rgb(253, 244, 238);
+}
+
+.blog h4{
+    font-size: 1.4em;
+    margin: 10px;
+    font-weight: 500;
+}
+
+.blog p{
+    font-size: 1em;
+    margin: 10px;
+}
+
+.blog img{
+    max-width: 350px;
+}
+
+#productos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5%;
+    justify-content: center;
+    margin: 25vw 5vw;
+    color: rgb(15, 15, 74);
+}
+
+button{
+    background-color: white;
+    border:none;
+}
+
+.refbg{
+    color:black;
+    background-color: aliceblue;
+}
