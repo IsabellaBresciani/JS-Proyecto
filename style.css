@@ -5,38 +5,67 @@
     font-family: 'Spectral', serif;
     font-size: 1.4vw;
     font-weight: 200;
+    
 }
 
 nav{
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    gap: 20%;
-    padding: 8vh;
+    top: 0vw;
+    justify-content:space-evenly;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    width: 100%;
+    padding: 2vw 0vw;
+    z-index: 3  ;
+
+}
+.navButton{
+    text-decoration: none;
+    color: rgb(2, 94, 54);
+    
+    padding: 1vw;
     
 }
-nav a{
+.navButton:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(3, 83, 3);
+    
+}
+nav .active{
     text-decoration: none;
-    color: aliceblue;
-    font-size: 3vw;
-    position: fixed;
-    font-weight: 200;
+    color: rgb(2, 94, 54);
+    border-style: groove;
+    border-color: rgb(127, 185, 160);;
+    padding: 1vw;
+}
+nav .active:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(3, 83, 3);
+}
+
+#carro{
+    max-width: 40px;
+    z-index: 20;
+    
 }
 
 header video{
     position: absolute;
     width: 100%;
-    top: 0;
+    top: 8vw;
 }
 header section{
     color: aliceblue;
     position: relative;
     padding: 4%;
     margin-left: 30vw;
-    margin-top: 10vw;
+    margin-top: 25vw;
 }
 header section p{
     text-align: end;
+    padding: 3vw;
 }
 h1{
     font-size: 6vw;
@@ -48,33 +77,61 @@ h1{
     flex-wrap: wrap;
     gap: 5vw;
     justify-content: center;
-    margin: 25vw 5vw;
+    margin: 15vh 5vw;
     color: rgb(15, 15, 74);
 }
 
 .blog{
     display: flex;
     flex-direction: column;
-    max-width: 500px;
-    box-shadow: 7px 7px 10px rgb(214, 205, 196);
+    align-items: center;
+    max-width: 30vw;
+    min-width: 190px;
+    box-shadow: 7px 7px 10px rgb(217, 217, 217);
     padding: 6%;
     margin-top: 3vw;
-    background-color: rgb(253, 244, 238);
+    background-color: rgb(255, 253, 249);
+    
+}
+
+.blog:hover{
+    
+    animation-name: efecto;
+    animation-duration: 20s;
+    
+    
+}
+
+@keyframes efecto{
+    0%{background-color: rgb(208, 224, 208);}
+    100%{background-color: rgb(87, 132, 87);;}
 }
 
 .blog h4{
     font-size: 1.4em;
-    margin: 10px;
+    padding: 10px;
     font-weight: 500;
+    text-align: center;
+}
+.blog p{
+    
+    margin: 1vh;
+
+}
+@media (max-width: 350px){
+    .blog p{
+    
+        font-size: 2em;
+        margin: 1vh;
+
+    }
 }
 
-.blog p{
-    font-size: 1em;
-    margin: 10px;
-}
 
 .blog img{
-    max-width: 350px;
+    max-width: 18vw;
+    min-width: 100px;
+    width: 25em;
 }
 
 #productos{
@@ -83,16 +140,49 @@ h1{
     flex-wrap: wrap;
     gap: 5%;
     justify-content: center;
-    margin: 25vw 5vw;
+    margin: 15vw 4vw 25vw 4vw;
     color: rgb(15, 15, 74);
+    background-image: linear-gradient(aliceblue,white);
 }
+
 
 button{
     background-color: white;
     border:none;
 }
 
-.refbg{
-    color:black;
-    background-color: aliceblue;
+
+.buttonCarrito{
+    padding: 1em;
+}
+.buttonCarrito:hover{
+    padding: 1em;
+    background-color: blanchedalmond;
+}
+
+#main{
+    margin-top:15vw;
+    text-align: center;
+    background-image: linear-gradient(aliceblue,white);
+    height: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: start;
+    color: rgb(3, 83, 3);
+    margin: 6% 0% 80vh 0px;
+    
+}
+
+#main h5{
+     padding: 6%;
+     font-weight: 500;
+     font-size: 3vw;
+}
+
+#compras{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6%
 }
