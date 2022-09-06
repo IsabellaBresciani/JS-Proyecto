@@ -1,29 +1,58 @@
-class Blogs{
-    constructor(imagen,titulo,detalle,fecha){
-        this.imagen=imagen
-        this.titulo=titulo
-        this.detalle=detalle
-        this.fecha=fecha
-    }
+
+function Blogs(vecBlog,blogs)  {
+    vecBlog.forEach((blog) => {
+        blogs.innerHTML += `
+        <article class="blog">
+            <img src=${blog.imagen}>
+            <h4>${blog.titulo}</h4>
+            <p>${blog.detalle}</p>
+            <p>${blog.fecha}</p>
+        </article>
+        `
+    }) 
 }
 
-const blog1 = new Blogs("./footage/faja.jpeg","Fajas maternales","¿Son necesarias las fajas maternales de Pre y Pos parto? Muchas embarazadas desconocen la existencia de las fajas, siendo estas indispensables para la futura mama[...]","07/27/2022")
-const blog2 = new Blogs("./footage/porteo.png","Beneficios del porteo","¿Son necesarias las fajas maternales de Pre y Pos parto? Muchas embarazadas desconocen la existencia de las fajas, siendo estas indispensables para la futura mama[...]","03/09/2022")  
-const blog3 = new Blogs("./footage/vestios.jpg","Vestidos de Lactancia","¿Son necesarias las fajas maternales de Pre y Pos parto? Muchas embarazadas desconocen la existencia de las fajas, siendo estas indispensables para la futura mama[...]","08/20/2022")
 
-const sectionBlog = [blog1,blog2,blog3]
-const blogs = document.getElementById("blogs")
+function Productos(vecProducto,productos){
+    vecProducto.forEach((prod) => {
+        productos.innerHTML += `
+        <article class="blog">
+            <img src=${prod.imagen}>
+            <h4>${prod.titulo}</h4>
+            <p>${prod.precio}</p>
+            <button class="buttonCarrito" id="carrito${prod.id}">agregar al carrito</button>
+        </article>
+        `
+    })
+}
+    
 
-sectionBlog.forEach((blog) => {
-    blogs.innerHTML += `
-    <article class="blog">
-        <img src=${blog.imagen}>
-        <h4>${blog.titulo}</h4>
-        <p>${blog.detalle}</p>
-        <p>${blog.fecha}</p>
-    </article>
-    `
-})
+function Compra(vecCompra){
+    vecCompra.forEach((prod)=> {
+        i=i+1
+        compras.innerHTML+=`
+        <article class="blog">
+            <img src=${prod.imagen}>
+            <h4>${prod.titulo}</h4>
+            <p>${prod.precio}</p>
+            <input type="button" value="Eliminar del carro" class="buttonCarrito" id="tienda${i}" onclick="location.reload()"/>
+        </article>
+        `
+    })
+}
 
-const fajas = document.getElementByIdI
 
+function botonCompra(){
+    botones.forEach((button)=> (
+        button.addEventListener("click",()=>{
+            compra.push(sectionProductos[botones.indexOf(button)])
+            localStorage.setItem("Carrito",JSON.stringify(compra))
+            Swal.fire(
+                'Añadiste este producto al carrito de compras!',
+                'Felicidades!',
+                'success'
+            )
+        })
+    ))
+
+}

@@ -7,29 +7,35 @@ class Productos{
     }
 }
 
+class Blogs{
+    constructor(imagen,titulo,detalle,fecha){
+        this.imagen=imagen
+        this.titulo=titulo
+        this.detalle=detalle
+        this.fecha=fecha
+    }
+}
+
 const prod1 = new Productos("../footage/short.jpeg", "Short maternal ONA","$4999","1")
 const prod2 = new Productos("../footage/pantalon.jpeg", "Pantalon maternal bianca","$9300","2")
 const prod3 = new Productos("../footage/palazo.jpeg", "Palazzo maternal malena","$8300","3")
 const prod4 = new Productos("../footage/camiseta.jpeg", "Camiseta Sarah","$7000","4")
 const prod5 = new Productos("../footage/buzo.png", "Buzo maternal Sofia","$11000","5")
 const prod6 = new Productos("../footage/remera.png", "Remera LORE","$5000","6")
+const blog1 = new Blogs("./footage/faja.jpeg","Fajas maternales","¿Son necesarias las fajas maternales de Pre y Pos parto? Muchas embarazadas desconocen la existencia de las fajas, siendo estas indispensables para la futura mama[...]","07/27/2022")
+const blog2 = new Blogs("./footage/porteo.png","Beneficios del porteo","¿Son necesarias las fajas maternales de Pre y Pos parto? Muchas embarazadas desconocen la existencia de las fajas, siendo estas indispensables para la futura mama[...]","03/09/2022")  
+const blog3 = new Blogs("./footage/vestios.jpg","Vestidos de Lactancia","¿Son necesarias las fajas maternales de Pre y Pos parto? Muchas embarazadas desconocen la existencia de las fajas, siendo estas indispensables para la futura mama[...]","08/20/2022")
 
 const sectionProductos = [prod1,prod2,prod3,prod4,prod5,prod6]
-
+const sectionBlog = [blog1,blog2,blog3]
 
 const productos = document.getElementById("productos")
-sectionProductos.forEach((prod) => {
-    productos.innerHTML += `
-    <article class="blog">
-        <img src=${prod.imagen}>
-        <h4>${prod.titulo}</h4>
-        <p>${prod.precio}</p>
-        <button class="buttonCarrito" id="carrito${prod.id}">agregar al carrito</button>
-    </article>
-    `
-})
+const blogs = document.getElementById("blogs")
 
+Productos(sectionProductos,productos);
+Blogs(sectionBlog,blogs)
 
+const carro = document.getElementById("carro")
 let button
 const botones = []
 let compra = []
@@ -47,19 +53,8 @@ for (i=1;i<=sectionProductos.length;i++){
     botones.push(button)
 }
 
-botones.forEach((button)=> (
-    button.addEventListener("click",()=>{
-        compra.push(sectionProductos[botones.indexOf(button)])
-        localStorage.setItem("Carrito",JSON.stringify(compra))
-        Swal.fire(
-            'Añadiste este producto al carrito de compras!',
-            'Felicidades!',
-            'success'
-        )
-    })
-))
+botonCompra()
 
-const carro = document.getElementById("carro")
 
 
 
