@@ -14,10 +14,25 @@ const prod4 = new Productos("../footage/camiseta.jpeg", "Camiseta Sarah","$7000"
 const prod5 = new Productos("../footage/buzo.png", "Buzo maternal Sofia","$11000","5")
 const prod6 = new Productos("../footage/remera.png", "Remera LORE","$5000","6")
 
-const sectionProductos = [prod1,prod2,prod3,prod4,prod5,prod6]
-
-
 const productos = document.getElementById("productos")
+
+
+
+const sectionProductos = []
+
+
+async function loadProds() {
+    const response = await fetch('../json/productos.json');
+    const prods = await response.json();
+    prods.forEach(prod => {
+        console.log(prod)
+        sectionProductos.push(prod)
+    })
+}
+
+loadProds()
+
+
 sectionProductos.forEach((prod) => {
     productos.innerHTML += `
     <article class="blog">
@@ -28,19 +43,17 @@ sectionProductos.forEach((prod) => {
     </article>
     `
 })
-
+console.log(sectionProductos)
 
 let button
 const botones = []
 let compra = []
-
 
 if (localStorage.getItem("Carrito")){
     compra = JSON.parse(localStorage.getItem("Carrito"))
 }else{
     localStorage.setItem("Carrito",JSON.stringify(compra))
 }
-
 
 for (i=1;i<=sectionProductos.length;i++){
     button = document.getElementById(`carrito${i}`)

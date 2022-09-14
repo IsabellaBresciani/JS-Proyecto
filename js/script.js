@@ -25,5 +25,4 @@ sectionBlog.forEach((blog) => {
     `
 })
 
-const fajas = document.getElementByIdI
 
