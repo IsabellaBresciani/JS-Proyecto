@@ -21,10 +21,8 @@ const divProductos = document.getElementById("productos")
 const divBlogs = document.getElementById("blogs")
 const compras = document.getElementById("compras")
 const comprasCarrito=document.getElementById("comprasCarrito")
-console.log("aca"+comprasCarrito)
-console.log("aca"+divProductos)
-console.log("aca"+compras)
-console.log("aca"+divBlogs)
+const producto = document.getElementsByClassName("blog")
+const ventanas = document.getElementById("ventanas")
 
 //traigo los productos y blogs del JSON
 const traerProductos = async () => {
@@ -44,7 +42,6 @@ const traerBlogs = async () => {
 //Los mustro en el front 
 traerBlogs().then(blogs =>{
     blogs.forEach((blog) => {
-        
         divBlogs.innerHTML += `
         <article class="blog">
             <img src=${blog.imagen}>
@@ -61,41 +58,49 @@ traerProductos().then(productos =>{
     sectionProductos = productos
     productos.forEach((prod) => {
         divProductos.innerHTML += `
-        <article class="blog">
+        <article class="prod">
             <img src=${prod.imagen}>
             <h4>${prod.titulo}</h4>
-            <p>${prod.precio}</p>
-            <button class="buttonCarrito" id="carrito${prod.id}">agregar al carrito</button>
+            <p>$${prod.precio}</p>    
         </article>`})
     
-    const producto = document.getElementsByClassName("blog")
-    const mainTienda = document.getElementById("mainTienda")
-    /*
-    producto.forEach(prod =>{
-        prod.addEventListener("click",()=>{
-            mainTienda.innerHTML+=`
+})
+
+.then(()=>{
+    const cards = Array.from(document.getElementsByClassName("prod"))
+    cards.forEach((card) =>{
+        card.addEventListener("click",()=>{
+            ventanas.innerHTML=`
                 <article class="productoDetail">
-                        <img src=${prod.imagen}>
+                        <img src="${card.children[0].getAttribute("src")}">
                         <div class="productoDetail-text"> 
-                            <h2>${prod.titulo}</h2>
-                            <h2>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</h2>
-                            <p>${prod.precio}</p>
-                            <input id="inputCantidad" type="number"> Cantidad de productos </input>
+                            <h4>${card.children[1].innerHTML}</h4>
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "</p>
+                            <p>$${card.children[2].innerHTML}</p>
+                            <label>Ingrese cantidad </label>
+                            <input class="inputText" type="number">
+                            <button class="buttonCarrito" id="carrito${cards.indexOf(card)}">agregar al carrito</button>
                         </div>
+                        <button class="close">X</button>
                 </article>
             `
-            let number = document.getElementById("inputCantidad")
-        })
-    })
-    */
-    for (i=1;i<=sectionProductos.length;i++){
-        button = document.getElementById(`carrito${i}`)
-        botones.push(button)
-    }
-    
-    botones.forEach((button)=> (
-        button.addEventListener("click",()=>{
-            compra.push(sectionProductos[botones.indexOf(button)])
+            let close = document.getElementsByClassName("close")
+            let detail = document.getElementsByClassName("productoDetail-text")[0]
+            Array.from(close).forEach((button)=>{
+            let productosDetailt = document.getElementsByClassName("productoDetail")
+            button.addEventListener("click",()=>{
+                productosDetailt[0].classList.add("remove")
+            })
+            let agregarCarrito = document.getElementById(`carrito${cards.indexOf(card)}`)
+            let input = document.getElementsByClassName("inputText")[0]
+            input.addEventListener("input",()=>{
+                let number = input.value
+                sectionProductos[cards.indexOf(card)].cantidad=number
+                agregarCarrito.innerHTML = ` Agregar al carrito ${number} unidades`
+            })
+            
+            agregarCarrito.addEventListener("click",()=>{
+            compra.push(sectionProductos[cards.indexOf(card)])
             localStorage.setItem("Carrito",JSON.stringify(compra))
             Swal.fire(
                 'Añadiste este producto al carrito de compras!',
@@ -103,9 +108,13 @@ traerProductos().then(productos =>{
                 'success'
             )
         })
-    ))
-    
-    
+        })
+        })
+
+        
+
+        
+    })
 })
 
 //Logica para que un producto se elimine del carrito
@@ -115,24 +124,31 @@ const Carrito =JSON.parse(localStorage.getItem("Carrito")).length
 if (Carrito==0){
     //me fijo si el carrito esta vacio, si esto es true luego imprimo ese mensaje 
     comprasCarrito.innerHTML = `
-    <h5> Usted aun no a incorporado ningun producto a su carrito</h5>`
+    <h2> Usted aun no a incorporado ningun producto a su carrito</h2>`
 }else{
     //Si en el carrito hay compras luego las guardo en la variable combras
     let botons = []
     compra=JSON.parse(localStorage.getItem("Carrito"))
-    
+    let detalleCompra = document.getElementById("detalleCompraLista")
+    let monto = 0
     //muestro las compras en el front
     compra.forEach(prod => {
         i=i+1
         comprasCarrito.innerHTML+=`
-        <article class="blog">
+        <article class="prod">
             <img src=${prod.imagen}>
             <h4>${prod.titulo}</h4>
-            <p>${prod.precio}</p>
+            <p>$${prod.precio}</p>
+            <p> Cantidad de productos = ${prod.cantidad}</p>
             <input type="button" value="Eliminar del carro" class="buttonCarrito" id="tienda${i}" onclick="location.reload()"/>
         </article>
         `
+        monto = monto + parseInt(prod.precio)*parseInt(prod.cantidad)
+        detalleCompra.innerHTML+=`
+        <li>Articulo: ${prod.titulo}, Precio: $${prod.precio}, Cantidad: ${prod.cantidad}</ul>`
+         
     });
+    detalleCompra.innerHTML+=`<p> el monto total es <b>${monto}</b>`
     //obtengo los botones de las compras y los guardo en el arreglo botones
     if (compra.length==1){
         button = document.getElementById(`tienda${i}`)

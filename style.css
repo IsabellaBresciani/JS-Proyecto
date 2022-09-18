@@ -93,7 +93,17 @@ h1{
     background-color: rgb(255, 253, 249);
     
 }
-
+.prod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 30vw;
+    min-width: 190px;
+    box-shadow: 7px 7px 10px rgb(217, 217, 217);
+    padding: 6%;
+    margin-top: 3vw;
+    background-color: rgb(255, 253, 249);
+}
 .blog:hover{
     
     animation-name: efecto;
@@ -161,7 +171,7 @@ button{
 }
 
 #mainCarrito{
-    margin-top:15vw;
+    padding-top:10vw;
     text-align: center;
     background-image: linear-gradient(aliceblue,white);
     height: 100%;
@@ -184,5 +194,61 @@ button{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 6%
+    gap: 6%;
+    top: 10vh;
+}
+.productoDetail{
+    position: fixed;
+    top: 50px;
+    display: flex;
+    flex-direction: row;
+    z-index: 30;
+    background-color: rgb(96, 173, 173);
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80%;
+    padding: 5%;
+
+}
+.productoDetail-text{
+    padding: 6%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap:2%;
+    color: aliceblue;
+}
+#ventanas{
+    display: flex;
+    justify-content: center;
+}
+.remove{
+    display:none;
+}
+.close{
+    align-self: start;
+    background-color: transparent;
+    color: aliceblue;
+    font-size: 2em;
+}
+#detalleCompra{
+    width: 100%;
+    height: 30vh;
+    background-color: white;
+    padding: 3%;
+}
+b{
+    font-weight: 500;
+}
+
+#detalleCompraLista{
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+#efectuarCompra{
+    padding: 2%;
+    background-color:beige;
 }

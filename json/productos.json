@@ -1,39 +1,45 @@
 [
     {
-    "imagen":"../footage/short.jpeg",
-    "titulo":"Short maternal ONA",
-    "precio":"$4999",
-    "id":"1"
+        "imagen":"../footage/short.jpeg",
+        "titulo":"Short maternal ONA",
+        "precio":4999,
+        "id":"1",
+        "cantidad":0
     },
     {
         "imagen":"../footage/pantalon.jpeg",
         "titulo":"Pantalon maternal bianca",
-        "precio":"$9300",
-        "id":"2"
+        "precio":9300,
+        "id":"2",
+        "cantidad":0
     },
     {
         "imagen":"../footage/palazo.jpeg",
         "titulo":"Palazzo maternal malena",
-        "precio":"$8300",
-        "id":"3"
+        "precio":8300,
+        "id":"3",
+        "cantidad":0
     },
     {
         "imagen":"../footage/camiseta.jpeg",
         "titulo":"Camiseta Sarah",
-        "precio":"$7000",
-        "id":"4"
+        "precio":7000,
+        "id":"4",
+        "cantidad":0
     },
     {
         "imagen":"../footage/buzo.png",
         "titulo":"Buzo maternal Sofia",
-        "precio":"$11000",
-        "id":"5"
+        "precio":11000,
+        "id":"5",
+        "cantidad":0
     },
     {
         "imagen":"../footage/remera.png",
         "titulo":"Remera LORE",
-        "precio":"$5000",
-        "id":"6"
+        "precio":5000,
+        "id":"6",
+        "cantidad":0
     }
 ]
     
