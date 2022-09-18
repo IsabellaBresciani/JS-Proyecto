@@ -1,9 +1,9 @@
 [
     {
-      "imagen":"../footage/short.jpeg",
-      "titulo":"Short maternal ONA",
-      "precio":"$4999",
-      "id":"1"
+    "imagen":"../footage/short.jpeg",
+    "titulo":"Short maternal ONA",
+    "precio":"$4999",
+    "id":"1"
     },
     {
         "imagen":"../footage/pantalon.jpeg",
@@ -35,5 +35,7 @@
         "precio":"$5000",
         "id":"6"
     }
-    
 ]
+    
+
+

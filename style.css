@@ -160,7 +160,7 @@ button{
     background-color: blanchedalmond;
 }
 
-#main{
+#mainCarrito{
     margin-top:15vw;
     text-align: center;
     background-image: linear-gradient(aliceblue,white);
@@ -179,7 +179,7 @@ button{
      font-size: 3vw;
 }
 
-#compras{
+#comprasCarrito{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
